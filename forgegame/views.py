@@ -29,7 +29,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect("forgegame:dashboard")
+            return redirect("forgegame:home")
         else:
             messages.error(request, "Nom d’utilisateur ou mot de passe incorrect.")
     else:
@@ -43,7 +43,7 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)  # Connexion automatique après inscription
-            return redirect("forgegame:dashboard")
+            return redirect("forgegame:home")
         else:
             messages.error(request, "Erreur lors de l’inscription.")
     else:

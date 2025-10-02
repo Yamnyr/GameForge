@@ -4,30 +4,6 @@ from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.conf import settings
 
 # --------------------------
-# Modèle utilisateur
-# --------------------------
-class CustomUser(AbstractUser):
-    bio = models.TextField(blank=True)
-    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
-
-    # Résoudre le conflit des reverse relations
-    groups = models.ManyToManyField(
-        Group,
-        related_name='customuser_set',  # <-- changer le related_name
-        blank=True,
-        help_text='The groups this user belongs to.'
-    )
-    user_permissions = models.ManyToManyField(
-        Permission,
-        related_name='customuser_permissions_set',  # <-- changer le related_name
-        blank=True,
-        help_text='Specific permissions for this user.'
-    )
-
-    def __str__(self):
-        return self.username
-
-# --------------------------
 # Modèle de jeu
 # --------------------------
 class Game(models.Model):

@@ -1,2 +1,21 @@
-<h1>Accueil - GameForge</h1>
-<p>Bienvenue sur GameForge !</p>
+{% extends 'forgegame/base.html' %}
+
+{% block title %}Accueil - GameForge{% endblock %}
+
+{% block content %}
+<h2>Bienvenue sur GameForge !</h2>
+<p>Créez et explorez des concepts de jeux vidéo générés par IA.</p>
+
+<h3>Jeux publics</h3>
+{% if games %}
+    {% for game in games %}
+        <div class="game-card">
+            <h4><a href="{% url 'game_detail' game.id %}">{{ game.title }}</a></h4>
+            <p><strong>Genre :</strong> {{ game.genre }} | <strong>Ambiance :</strong> {{ game.ambiance }}</p>
+            <p><strong>Auteur :</strong> {{ game.user.username }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Aucun jeu public pour le moment. Soyez le premier à en créer un !</p>
+{% endif %}
+{% endblock %}
