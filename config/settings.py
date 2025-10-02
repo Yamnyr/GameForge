@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'games.CustomUser'
+AUTH_USER_MODEL = 'forgegame.CustomUser'
 
 # Application definition
 
