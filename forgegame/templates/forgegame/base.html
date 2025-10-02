@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GameForge</title>
+</head>
+<body>
+<nav>
+    <a href="{% url 'forgegame:home' %}">Accueil</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'forgegame:dashboard' %}">Dashboard</a>
+        <a href="{% url 'forgegame:logout' %}">Se déconnecter</a>
+    {% else %}
+        <a href="{% url 'forgegame:login' %}">Connexion</a>
+        <a href="{% url 'forgegame:signup' %}">Inscription</a>
+    {% endif %}
+</nav>
+<hr>
+{% if messages %}
+    {% for message in messages %}
+        <p style="color:red;">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+{% block content %}{% endblock %}
+</body>
+</html>
